@@ -12,7 +12,6 @@ export default function Checkbox({ checked, onChange, label, disabled = false })
         e.stopPropagation();
         onChange(!checked);
       }}
-      // Padding enlarges the touch target beyond the 18px box.
       className="group -m-2 shrink-0 p-2"
     >
       <span

@@ -19,7 +19,6 @@ router.param('id', (req, res, next, id) => {
 
 router.get('/', listTasks);
 router.post('/', createTask);
-// Must come before "/:id" so "weeks" isn't treated as an id.
 router.get('/weeks', weeklySummary);
 router.get('/:id', getTask);
 router.patch('/:id', updateTask);

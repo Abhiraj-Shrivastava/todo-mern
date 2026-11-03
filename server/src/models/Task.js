@@ -17,12 +17,10 @@ const taskSchema = new mongoose.Schema(
       default: '',
       maxlength: [1000, 'Description must be 1000 characters or fewer'],
     },
-    // Scheduled date & time of the task (the "Start" time in the UI).
     dueDate: {
       type: Date,
       required: [true, 'Date & time is required'],
     },
-    // Optional end time ("Ends" in the UI). Must not be before dueDate.
     endDate: {
       type: Date,
       validate: {
@@ -48,7 +46,6 @@ const taskSchema = new mongoose.Schema(
   }
 );
 
-// Week ranges and the home screen both query by date.
 taskSchema.index({ dueDate: 1 });
 
 export default mongoose.model('Task', taskSchema);

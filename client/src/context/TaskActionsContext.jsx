@@ -7,14 +7,10 @@ import ConfirmDialog from '../components/ConfirmDialog.jsx';
 
 const TaskActionsContext = createContext(null);
 
-/**
- * Owns the task sheets (create / edit / view), the delete confirmation and all
- * mutations. Every successful mutation bumps `version`, which lists use to refetch.
- */
 export function TaskActionsProvider({ children }) {
   const showToast = useToast();
   const [version, setVersion] = useState(0);
-  const [sheet, setSheet] = useState(null); // { mode: 'create' | 'edit' | 'view', task?, date? }
+  const [sheet, setSheet] = useState(null);
   const [pendingDelete, setPendingDelete] = useState(null);
 
   const refresh = useCallback(() => setVersion((v) => v + 1), []);

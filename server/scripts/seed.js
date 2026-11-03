@@ -1,6 +1,3 @@
-// Loads sample tasks into the database from MONGODB_URI.
-//   npm run seed            -> only if the collection is empty
-//   npm run seed -- --reset -> delete all tasks first
 import 'dotenv/config';
 import mongoose from 'mongoose';
 import Task from '../src/models/Task.js';

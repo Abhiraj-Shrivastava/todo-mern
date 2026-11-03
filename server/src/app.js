@@ -10,7 +10,6 @@ function corsOptions() {
     .split(',')
     .map((origin) => origin.trim().replace(/\/$/, ''))
     .filter(Boolean);
-  // No list configured: reflect any origin (handy for local development).
   return { origin: origins.length ? origins : true };
 }
 

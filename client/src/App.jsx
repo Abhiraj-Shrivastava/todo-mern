@@ -10,7 +10,6 @@ function RequireOnboarding({ children }) {
 
 export default function App() {
   return (
-    // Phone-width column; on larger screens it is centred like a device.
     <main className="mx-auto min-h-dvh w-full max-w-md bg-white md:max-w-lg md:shadow-[0_0_40px_rgba(30,40,90,0.08)]">
       <Routes>
         <Route path="/welcome" element={<Onboarding />} />

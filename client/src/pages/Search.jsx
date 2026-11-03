@@ -14,7 +14,6 @@ export default function Search() {
   const [query, setQuery] = useState(() => params.get('q') ?? '');
   const term = useDebouncedValue(query.trim(), 300);
 
-  // Keep ?q= in the URL so going back to this page restores the search.
   useEffect(() => {
     setParams(term ? { q: term } : {}, { replace: true });
   }, [term, setParams]);

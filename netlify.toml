@@ -1,5 +1,3 @@
-# Netlify builds the React app from /client.
-# Set VITE_API_URL in Netlify (Site settings -> Environment variables) to your API URL.
 [build]
   base = "client"
   command = "npm run build"
@@ -8,7 +6,6 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# Single-page app: let React Router handle every path.
 [[redirects]]
   from = "/*"
   to = "/index.html"

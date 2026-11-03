@@ -1,6 +1,3 @@
-// Runs the API against a temporary in-memory MongoDB, so no database install is needed.
-// Data is lost when the process stops. The first run downloads a MongoDB binary (~100 MB).
-// Set SEED=false to start with an empty database.
 import { MongoMemoryServer } from 'mongodb-memory-server-core';
 
 console.log('Starting in-memory MongoDB (first run downloads the binary, please wait)...');

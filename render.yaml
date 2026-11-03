@@ -1,10 +1,9 @@
-# Render Blueprint for the API (Dashboard -> New -> Blueprint -> pick this repo).
 services:
   - type: web
     name: todo-api
     runtime: node
     plan: free
-    region: virginia # same AWS region as the Atlas cluster (us-east-1) for low latency
+    region: virginia
     rootDir: server
     buildCommand: npm ci --omit=dev
     startCommand: npm start
@@ -13,6 +12,6 @@ services:
       - key: NODE_VERSION
         value: "20"
       - key: MONGODB_URI
-        sync: false # paste your MongoDB Atlas connection string in the dashboard
+        sync: false
       - key: CLIENT_ORIGIN
-        value: https://abhiraj-todo-mern.netlify.app # only the deployed front end may call the API from a browser
+        value: https://abhiraj-todo-mern.netlify.app

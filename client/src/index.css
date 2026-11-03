@@ -3,7 +3,6 @@
 @theme {
   --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  /* Colours sampled from the Figma file */
   --color-brand-50: #eef1fd;
   --color-brand-100: #dfe4fc;
   --color-brand-200: #c5cefa;

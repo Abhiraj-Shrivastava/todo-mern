@@ -20,7 +20,6 @@ function WeekTasks({ week }) {
   );
 }
 
-/** A Monday–Sunday week with its open/completed counts; tap to expand its tasks. */
 export default function WeekCard({ week }) {
   const [expanded, setExpanded] = useState(false);
   const label = relativeWeekLabel(week.weekStart);

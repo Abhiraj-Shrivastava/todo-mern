@@ -29,12 +29,10 @@ function validate(form) {
   if (!form.title.trim()) errors.title = 'Please enter a task title';
   if (!form.date) errors.date = 'Please pick a date';
   if (!form.start) errors.start = 'Please set a start time';
-  // "HH:mm" strings compare correctly as text.
   if (form.end && form.start && form.end <= form.start) errors.end = 'End time must be after the start';
   return errors;
 }
 
-// Server field names -> form field names
 function mapServerErrors(details) {
   const map = { title: 'title', description: 'description', dueDate: 'start', endDate: 'end', priority: 'priority' };
   return Object.fromEntries(Object.entries(details).map(([field, message]) => [map[field] ?? 'form', message]));
@@ -45,14 +43,10 @@ function formatDateLabel(value) {
   return format(date, isSameYear(date, new Date()) ? 'EEEE d, MMMM' : 'EEEE d, MMMM yyyy');
 }
 
-// Open the native picker on click in browsers that support it (Chrome needs this
-// for the date input, which is visually hidden behind a formatted label).
 function openPicker(e) {
   try {
     e.currentTarget.showPicker?.();
-  } catch {
-    /* not supported or not allowed: the browser's default behaviour still applies */
-  }
+  } catch {}
 }
 
 function Field({ label, htmlFor, error, children }) {

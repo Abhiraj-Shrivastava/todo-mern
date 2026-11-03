@@ -15,7 +15,6 @@ function SummaryCard({ tone, icon, label, value, caption }) {
   );
 }
 
-/** "Task Complete" / "Task Pending" cards and the Weekly Progress bar from the Figma home screen. */
 export default function WeekSummary({ completed, total, caption }) {
   const pending = total - completed;
   const percent = total ? Math.round((completed / total) * 100) : 0;

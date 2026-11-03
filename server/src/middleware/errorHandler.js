@@ -30,7 +30,6 @@ export function notFound(req, res) {
   res.status(404).json({ error: { message: `Route not found: ${req.method} ${req.originalUrl}` } });
 }
 
-// eslint-disable-next-line no-unused-vars
 export function errorHandler(err, req, res, next) {
   if (err instanceof mongoose.Error.ValidationError) {
     const details = validationDetails(err);

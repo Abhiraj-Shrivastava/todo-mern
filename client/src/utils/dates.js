@@ -9,7 +9,6 @@ import {
   startOfWeek,
 } from 'date-fns';
 
-// Weeks run Monday to Sunday.
 const WEEK_OPTIONS = { weekStartsOn: 1 };
 
 export const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
@@ -46,12 +45,10 @@ export function formatTimeRange(task) {
   return task.endDate ? `${start} – ${format(new Date(task.endDate), 'h:mm a')}` : start;
 }
 
-// <input type="date"> / <input type="time"> values <-> Date (local time)
 export const toDateInput = (date) => format(date, 'yyyy-MM-dd');
 export const toTimeInput = (date) => format(date, 'HH:mm');
 export const fromInputs = (dateValue, timeValue) => new Date(`${dateValue}T${timeValue}`);
 
-// Default start time for a new task: the next full hour today, otherwise 9:00.
 export function defaultStartTime(day) {
   const now = new Date();
   if (isSameDay(day, now) && now.getHours() < 23) return `${String(now.getHours() + 1).padStart(2, '0')}:00`;

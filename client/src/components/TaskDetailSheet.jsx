@@ -30,9 +30,7 @@ export default function TaskDetailSheet({ task, onClose }) {
     setBusy(true);
     try {
       await setStatus(task, completed ? 'In Progress' : 'Completed');
-    } catch {
-      /* toast already shown */
-    } finally {
+    } catch {} finally {
       setBusy(false);
     }
   };

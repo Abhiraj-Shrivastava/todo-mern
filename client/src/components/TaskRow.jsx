@@ -15,7 +15,6 @@ function Highlight({ text, query }) {
     .filter(Boolean)
     .map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
   if (!words.length) return text;
-  // With a capturing group, split() puts the matches at the odd indexes.
   return text.split(new RegExp(`(${words.join('|')})`, 'ig')).map((part, i) =>
     i % 2 ? (
       <mark key={i} className="rounded-sm bg-yellow-100 text-inherit">
@@ -27,10 +26,6 @@ function Highlight({ text, query }) {
   );
 }
 
-/**
- * One task in a list. Swipe left (touch or mouse drag) to reveal a Delete button,
- * as in the brief; the trash icon does the same with a confirmation step.
- */
 export default function TaskRow({ task, showDate = false, highlight = '' }) {
   const { openView, openEdit, requestDelete, deleteTask, setStatus } = useTaskActions();
   const [optimisticStatus, setOptimisticStatus] = useState(null);
@@ -40,10 +35,8 @@ export default function TaskRow({ task, showDate = false, highlight = '' }) {
   const drag = useRef(null);
   const suppressClickUntil = useRef(0);
 
-  // Fresh data from the server replaces the optimistic value.
   useEffect(() => setOptimisticStatus(null), [task.status, task.updatedAt]);
 
-  // Tapping anywhere outside an open row closes it.
   const isOpen = offset !== 0 && !dragging;
   useEffect(() => {
     if (!isOpen) return;
@@ -78,7 +71,7 @@ export default function TaskRow({ task, showDate = false, highlight = '' }) {
     const dy = e.clientY - d.y;
     if (!d.active) {
       if (Math.abs(dy) > 10 && Math.abs(dy) > Math.abs(dx)) {
-        drag.current = null; // vertical scroll, not a swipe
+        drag.current = null;
         return;
       }
       if (Math.abs(dx) < 8) return;
@@ -117,7 +110,6 @@ export default function TaskRow({ task, showDate = false, highlight = '' }) {
         aria-hidden={!isOpen}
         onClick={() => deleteTask(task)}
         className="absolute inset-y-0 right-0 flex items-center justify-center gap-1.5 bg-pending-ink text-[13px] font-medium text-white"
-        // Hidden at rest so its edges can't bleed through the row at fractional pixel offsets.
         style={{ width: ACTION_WIDTH, visibility: offset === 0 ? 'hidden' : 'visible' }}
       >
         <Trash2 className="size-4" />
