@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Colours sampled from the Figma file */
+  --color-brand-50: #eef1fd;
+  --color-brand-100: #dfe4fc;
+  --color-brand-200: #c5cefa;
+  --color-brand-500: #4566ec;
+  --color-brand-600: #3753d4;
+  --color-brand-700: #2b43b0;
+  --color-navy: #22409a;
+  --color-track: #d8ddfb;
+  --color-ink: #17181c;
+  --color-muted: #8a8f9c;
+  --color-line: #e7e9f0;
+  --color-pending: #fde4e4;
+  --color-pending-ink: #d94848;
+
+  --animate-sheet-up: sheet-up 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-fade-in: fade-in 0.2s ease-out;
+  --animate-pop-in: pop-in 0.2s ease-out;
+
+  @keyframes sheet-up {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes pop-in {
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-[#eceef5] font-sans text-ink antialiased;
+  }
+  button {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
